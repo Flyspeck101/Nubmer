@@ -6,6 +6,7 @@ class Number: Numeric {
   private var posDigits: [Int]
   private var negDigits: [Int]
   var magnitudeBounds: (Int, Int) { (posDigits.count - 1, -(negDigits.count - 1)) }
+  var sign: Bool
   
   // Equatable
   static func == (lhs: Number, rhs: Number) -> Bool {
@@ -54,8 +55,9 @@ class Number: Numeric {
     }
   }
   
-  init(digits: [Int], decimalPlaces: [Int] = [0]) {
+  init(digits: [Int], decimalPlaces: [Int] = [0], sign: Bool = true) {
     posDigits = digits
     negDigits = decimalPlaces
+    self.sign = sign
   }
 }

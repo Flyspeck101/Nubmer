@@ -30,7 +30,17 @@ class Number: Numeric {
   // AdditiveArithmetic
   static var zero = Number(digits: [0])
   
-  
+  static func + (lhs: Number, rhs: Number) -> Number {
+    private var pos = []
+    private var neg = []
+    private var _lhs = lhs.negDigits
+    _lhs.reverse()
+    private var _rhs = rhs.negDigits
+    _rhs.reverse()
+    if _lhs.count != _rhs.count {
+      
+    }
+  }
   
   init(digits: [Int], decimalPlaces: [Int] = [0]) {
     posDigits = digits

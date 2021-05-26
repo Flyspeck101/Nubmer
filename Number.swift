@@ -38,7 +38,19 @@ class Number: Numeric {
     private var _rhs = rhs.negDigits
     _rhs.reverse()
     if _lhs.count != _rhs.count {
-      
+      if _lhs.count > _rhs.count {
+        for _ in 1 ..< _rhs.count { neg.append(0) }
+        var index = _rhs.count
+        while index < _lhs.count {
+          neg.append(_lhs[index])
+        }
+      } else {
+        for _ in 1 ..< _lhs.count { neg.append(0) }
+        var index = _lhs.count
+        while index < _rhs.count {
+          neg.append(_rhs[index])
+        }
+      }
     }
   }
   

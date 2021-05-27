@@ -43,16 +43,34 @@ class Number: Numeric {
         for _ in 1 ..< _rhs.count { neg.append(0) }
         var index = _rhs.count
         while index < _lhs.count {
-          neg.append(_lhs[index])
+          neg.append(_lhs.remove(at: index))
         }
       } else {
         for _ in 1 ..< _lhs.count { neg.append(0) }
         var index = _lhs.count
         while index < _rhs.count {
-          neg.append(_rhs[index])
+          neg.append(_rhs.remove(at: index))
         }
       }
-    }
+    } else { for _ in 1 ..< _lhs.count { neg.append(0) } }
+    private var plhs = lhs.posDigits
+    private var prhs = rhs.posDigits
+    if plhs.count != prhs.count {
+      if plhs.count > prhs.count {
+        for _ in 1 ..< prhs.count { pos.append(0) }
+        var index = prhs.count
+        while index < plhs.count {
+          pos.append(plhs.remove(at: index))
+        }
+      } else {
+        for _ in 1 ..< plhs.count { pos.append(0) }
+        var index = plhs.count
+        while index < prhs.count {
+          pos.append(prhs.remove(at: index))
+        }
+      }
+    } else { for _ in 1 ..< plhs.count { pos.append(0) } }
+    
   }
   
   init(digits: [Int], decimalPlaces: [Int] = [0], sign: Bool = true) {
